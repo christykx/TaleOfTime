@@ -1,0 +1,129 @@
+<html>
+<head>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+<!-- Include the above in your HEAD tag -->
+<div class="container">
+<section>  
+<form class="form-horizontal" action="/edit-profile/{{user._id}}" enctype="multipart/form-data" method="post">
+<fieldset>
+<br>
+<!-- Form Name -->
+<legend>EDIT PROFILE</legend>
+<hr><br>
+
+<!-- File Button --> 
+<div>
+<div class="form-group">
+  <div class="col-md-4">
+      <img src="/profile-images/{{user._id}}.jpg" alt="" style="width: 50%; height:auto;" id="imgView"><br><br>
+  {{!-- <label class="col-md-4 control-label" for="image">Upload Profile Picture</label> --}}
+  <span>Upload Profile Picture</span>
+    <input id="image" name="image" style="width: 90%;" class="form-control" type="file" onchange="viewImage(event)">
+  </div>
+</div>
+</div>
+<br><br>
+
+   <div class="d-flex flex-row align-items-center mb-4">
+                     <svg xmlns="http://www.w3.org/2000/svg"  style="margin-top: 38px;" width="30" height="30" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+  <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+</svg>
+                    <div class="form-outline flex-fill mb-0">
+                         <label class="form-label" for="form3Example1c">Your Name</label>
+                      <input type="text" name="username"  value="{{user.username}}" placeholder="Enter your name" id="form3Example1c" class="form-control" style="width: 40%;"/>
+                     
+                    </div>
+                  </div>
+<br>
+
+<!-- Select Basic -->
+          <div class="d-flex flex-row align-items-center mb-4">
+                    
+  <svg xmlns="http://www.w3.org/2000/svg" style="margin-top: 38px;" width="25" height="25" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+  <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
+</svg>
+                    <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="form3Example3c">Your Email</label>
+                      <input type="email" id="form3Example3c"   value="{{user.email}}"  style="width: 40%;" name="email" placeholder="Enter your email address" class="form-control" />
+                    
+                    </div>
+                  </div>
+
+<br>
+<!-- Textarea -->
+        <div class="d-flex flex-row align-items-center mb-4">
+                    
+ <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+</svg>
+                    <div class="form-outline flex-fill mb-0">
+                          <label class="form-label" for="form3Example3c">Your phone number</label>
+                      <input type="tel" id="phone"  value="{{user.phone}}"  style="width: 40%;" name="phone" placeholder="Enter your phone number" class="form-control" />
+                    
+                    </div>
+                  </div>
+
+
+ 
+<br>
+
+ <div class="d-flex flex-row align-items-center mb-4">
+    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+  <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+</svg>
+    <div class="form-outline flex-fill mb-0">
+    <label for="form-label">Address</label>
+    <input type="text" name="address"  style="width: 40%;" class="form-control" value="{{user.address}}" id="address" placeholder="1234 Main St">
+  </div>
+  </div>
+  <br>
+
+ <div class="d-flex flex-row align-items-center mb-4">
+    <div class="form-outline flex-fill mb-0">
+    <label for="form-label">Change password</label>
+    <input type="text" name="password"  style="width: 40%;" class="form-control" id="password" placeholder="Change your password">
+  </div>
+  </div>
+  <br>
+
+  
+    {{!-- {{#if userDetails.addresses}}
+    {{#each userDetails.addresses}}
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold ">{{this.title}}</div>
+     <p class="mb-0">{{this.address}}</p>
+     <span >{{this.city}}, {{this.pincode}}</span>
+     <p class="mb-0">{{this.phone}}</p>
+    </div>
+     <a  class=" btn text-dark p-2 mx-2 " onclick="confirmation('{{this.title}}')"><i class="fas fa-trash fa-lg"></i></a>
+  </li>
+  {{/each}}
+  {{else}} --}}
+
+<!-- Button -->
+<div class="form-group">
+
+  <div class="col-md-4">
+    <button  class="btn btn-primary" type="submit">Submit</button>
+  </div>
+  </div>
+
+</fieldset>
+</form>
+</section>
+</div>
+ </body>
+</html>
+
+
+<script>
+    function viewImage(event)
+    {
+    document.getElementById('imgView').src=URL.createObjectURL(event.target.files[0])
+    }
+</script>

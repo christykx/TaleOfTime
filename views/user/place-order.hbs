@@ -1,0 +1,120 @@
+<div class="container mt-5">
+<form class="row g-3" action="" id="frm">
+  {{!-- <div class="col-md-6">
+    <label for="inputEmail4" class="form-label">Email</label>
+    <input type="email" class="form-control" id="inputEmail4">
+  </div>
+  <div class="col-md-6">
+    <label for="inputPassword4" class="form-label">Password</label>
+    <input type="password" class="form-control" id="inputPassword4">
+  </div> --}}
+  <div class="col-6">
+    <label for="inputAddress" class="form-label">Address</label>
+    <input type="text" name="address" class="form-control" placeholder="Eg: 1234 Main St">
+  </div>
+  {{!-- <div class="col-12">
+    <label for="inputAddress2" class="form-label">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+  </div> --}}
+    <div class="col-md-4">
+    <label for="inputPhone" class="form-label">phone Number</label>
+    <input type="tel" name="phone" class="form-control" id="inputPhone">
+  </div>
+
+  <div class="col-md-6">
+    <label for="inputCity" class="form-label">City</label>
+    <input type="text" name="city" class="form-control" id="inputCity">
+  </div>
+  {{!-- <div class="col-md-4">
+    <label for="inputState" class="form-label">State</label>
+    <select id="inputState" class="form-select">
+      <option selected>Choose...</option>
+      <option>...</option>
+    </select>
+  </div> --}}
+  <div class="col-md-2">
+    <label for="inputZip" class="form-label">Pincode</label>
+    <input type="number" name="pincode" class="form-control" id="inputZip">
+  </div>
+<input type="text" name="userId" id="" value="{{user._id}}" hidden> 
+<input type="text" name="useremail" id="" value="{{user.email}}" hidden> 
+
+<div>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Total Amount: ₹{{total}} </h5><hr>
+    <h5 class="card-title">Payment Method</h5><hr>
+    
+<div class="form-check">
+  <input type="radio" class="form-check-input" id="radio1" name="payment-method" value="cod" checked>COD
+  <label class="form-check-label" for="radio1"></label>
+</div>
+<div class="form-check">
+  <input type="radio" class="form-check-input" id="radio2" name="payment-method" value="online">Online payment
+  <label class="form-check-label" for="radio2"></label>
+</div>
+  <br>
+  <button type="submit" class="btn btn-primary">Check Out</button>
+  </div>
+</div>
+</div>
+  
+</form>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+{{!-- <script>
+jQuery('#frm').validate({
+rules:{
+    address:{
+      required:true,
+      normalizer:function(value){
+        return $.trim(value);
+      }
+    },
+    city:{
+      required:true,
+      normalizer:function(value){
+        return $.trim(value);
+      }
+    },
+    pincode:{
+      required:true,
+      maxlength:6
+    },
+    phone:"required",
+
+},messages:{
+    address:"please enter your address",
+    phone:"please enter your phone number",
+    city:"please enter your city",
+    pincode:"please enter your pincode",
+
+},  
+submitHandler:function(form){
+    form.submit();
+});
+</script> --}}
+
+
+<script>
+  $("#frm").submit((e)=>{
+     e.preventDefault()
+     $.ajax({
+      url:'/place-order',
+      method:'post',
+      data:$('#frm').serialize(),
+      success:(response)=>{
+      
+      if(response.status){
+        location.href='/order-success'
+      }
+      
+      }
+     })
+  })
+</script>
+
